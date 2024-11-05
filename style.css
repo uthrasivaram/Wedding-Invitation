@@ -1,0 +1,368 @@
+ body {
+  background: radial-gradient(circle at 10% 20%, rgb(220, 217, 249) 0%, rgb(172, 224, 217) 89.8%);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  perspective: 1400px;  
+  margin: 0;
+  height: 100vh; 
+  overflow: hidden;
+  /* transform-origin: center center;  */
+}
+ 
+ 
+
+#wedding-invitation {
+  overflow: hidden;   
+  transform-origin: center center; /* Set origin for scaling */
+  /* transition: opacity 0.5s ease-out; */
+}
+
+/* Hide #wedding-invitation and show details when transition happens */
+ 
+
+* {
+  outline: none;
+}
+ 
+
+@keyframes fadeInTopLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-60px, -60px) scale(0.9); /* Start from an offset top-left */
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* End at centered position */
+  }
+}
+
+.invitation {
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeInTopLeft 1s ease-out forwards; 
+}
+
+.envelope {
+  background: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+  width: 100%;
+  height: 243px;
+  position: relative;
+  z-index: 1;
+}
+.envelope.is-open:before, .envelope.is-open:after {
+  z-index: -2;
+}
+
+.envelope:before,
+.envelope:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+}
+
+.envelope:before {
+  right: 0;
+  border-bottom: 0px solid transparent;
+  border-top: 243px solid transparent;
+  border-right: 400px solid #1cbb64;
+  z-index: 1;
+}
+
+.envelope:after {
+  left: 0;
+  border-bottom: 0px solid transparent;
+  border-top: 243px solid transparent;
+  border-left: 400px solid #1cbb64;
+  z-index: 1;
+}
+
+.flap {
+  border-right: 200px solid transparent;
+  border-top: 153.8461538462px solid #1cbb64;
+  border-left: 200px solid transparent;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 50% 0%;
+  z-index: 2;
+}
+
+.mask {
+  box-sizing: border-box;
+  -webkit-clip-path: inset(0 0 50% 0);
+          clip-path: inset(0 0 50% 0);
+  overflow: hidden;
+  position: relative;
+  width: 390px;
+  height: 1650px;
+  z-index: 0;
+  margin: auto;
+  top: 50%;
+  transform: translate(0, -50%);
+  perspective: 1400px;
+}
+
+.card {
+  position: relative;
+  width: 390px;
+  height: 550px;
+  margin: auto;
+  transform-style: preserve-3d;
+  transform-origin: 50% 10%;
+  transform: translate(0, 128%) rotateY(0deg);
+}
+
+.face {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  background: transparent 50% 100%/auto 100% no-repeat;
+  box-shadow: 0 3px 6x rgba(0, 0, 0, 0.3);
+}
+.face:last-of-type {
+  /* transform: translateZ(-3px) rotateY(180deg); */
+  background-size: 100% auto;
+}
+
+.front {
+  background-image: url("assets/image/Invitation_main.jpg");
+  background-size: contain;
+  background-position: center;      
+  background-repeat: no-repeat; 
+}
+ 
+   
+ 
+
+.details { 
+  display: flex;
+  flex-direction: column;  
+  overflow: visible !important;  
+    padding: 20px;
+}
+ 
+
+.details .invitation_one, .invitation_two, .invitation_three {
+  width: 100%;
+  height: 600px;  
+  background-size:contain;           
+  background-position: center;      
+  background-repeat: no-repeat; 
+  color: white;   
+}
+.details .invitation_one { 
+  background-image: url("assets/image/invitation1.png"); 
+}
+.details .invitation_two { 
+  background-image: url("assets/image/invitation2.png"); 
+}
+.details .invitation_three { 
+  background-image: url("assets/image/invitation3.png"); 
+  display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      /* height: 100vh;  */
+      margin: 0;
+      font-family: Arial, sans-serif;
+      /* padding-bottom: 70px; */
+
+}
+.details .invitation-four{
+  display: none;
+}
+
+
+.container_map {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+ 
+.event-details {
+  background-color: #f4d6b3;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  color: #b02243;
+  font-size: 18px;
+  line-height: 1.6;
+  width: 300px;
+}
+ 
+.map-container {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.map-embed {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.invitation-message {
+  text-align: center;
+  color: #ffffff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 24px; 
+  max-width: 550px;
+  line-height: 1.6;
+}
+
+@media (min-width: 750px) and (max-width: 1049px){
+  body {
+    margin: 5px;
+  } 
+  .details .invitation_one, .invitation_two, .invitation_three {
+      width: 100%;
+      height: 430px !important;  
+      background-size:contain;           
+      background-position: center;      
+      background-repeat: no-repeat; 
+      color: white;   
+      padding-bottom: 10px;
+    }
+    .container_map {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .event-details {
+      background-color: #f4d6b3;
+      padding: 10px;
+      border-radius: 15px;
+      text-align: center;
+      color: #b02243;
+      font-size: 12px;
+      line-height: 1.6;
+      width: 300px;
+    }
+     
+    .map-container {
+      position: relative;
+      width: 250px;
+      height: 150px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+     
+    
+    .invitation-message {
+      text-align: center;
+      color: #ffffff;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 18px; 
+      max-width: 450px;
+      line-height: 1.6;
+      padding-bottom: 20px;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 749px){
+  body {
+    margin: 5px;
+  } 
+  .details .invitation_one, .invitation_two, .invitation_three {
+      width: 100%;
+      height: 380px !important;  
+      background-size:contain;           
+      background-position: center;      
+      background-repeat: no-repeat; 
+      color: white;
+      padding-bottom: 10px;   
+    }
+    .container_map {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .event-details {
+      background-color: #f4d6b3;
+      padding: 10px;
+      border-radius: 15px;
+      text-align: center;
+      color: #b02243;
+      font-size: 12px;
+      line-height: 1.6;
+      width: 300px;
+    }
+     
+    .map-container {
+      position: relative;
+      width: 250px;
+      height: 150px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+     
+    
+    .invitation-message {
+      text-align: center;
+      color: #ffffff;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 16px; 
+      max-width: 420px;
+      line-height: 1.6;
+      padding-bottom: 20px;
+    }
+  
+}
+
+
+@media  (max-width: 649px){
+
+  body{
+      margin: 10px;
+      /* height: 0px;   */
+  }
+  
+
+  .details .invitation_one, .invitation_two, .invitation_three {
+      width: 100%;
+      height: 330px;   
+      margin-bottom: 10px;
+    }
+.details .invitation_one { 
+  background-image: url("assets/image/Mobile1.jpg"); 
+}
+.details .invitation_two { 
+  background-image: url("assets/image/Mobile2.jpg"); 
+}
+.details .invitation_three { 
+  background-image: url("assets/image/Mobile3.jpg");  
+ 
+} 
+.details .invitation-four {  
+   display: block;
+      width: 100%; /* Adjust width if needed */
+      height: 200px; /* Adjust height if needed */
+      border: 5px solid rgb(56, 136, 98);
+      margin-top: 20px;
+} 
+
+
+ .container_map,
+.invitation-message {
+  display: none; /* Hides the event-details and invitation-message */
+}
+}
+
+.cp-text{ 
+  color: rgba(0,0,0,.7); 
+  text-align: center;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.1);}
+
+ 
